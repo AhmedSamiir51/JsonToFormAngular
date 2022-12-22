@@ -1,0 +1,29 @@
+<!-- <input type="text" [(ngModel)]="ahmed"   >
+ 
+<button routerLink="/Home/Form" (click)="Submit()"> ahmed </button> -->
+
+
+
+<!-- <form class="col-12">
+    <div class="row">
+        <div class="input-field col-12">
+            <textarea id="textarea1" class="materialize-textarea" style="height: 1200px;"  [(ngModel)]="ahmed"></textarea>
+            <label for="textarea1" class="active">Input the JSON representation of the Form</label>
+        </div>
+        <div class="input-field col-12 center">
+
+            <button routerLink="/Home/Form"  class="waves-effect waves-light btn" (click)="Submit()"><i class="material-icons right">arrow_upward</i></button>
+
+         </div>
+    </div>
+</form> -->
+ 
+  <div class="mb-3">
+     <textarea class="form-control" placeholder="Input the JSON representation of the Form" [(ngModel)]="ahmed"   rows="6"></textarea>
+  </div>
+  <div class="mb-3 text-center">
+    
+    <button routerLink="/Home/Form" mat-raised-button color="warn" (click)="Submit()" >Generate</button>
+
+    
+</div> 
