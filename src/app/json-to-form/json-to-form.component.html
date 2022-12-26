@@ -2,37 +2,37 @@
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
    
     <div *ngFor="let control of jsonFormData?.form">
-        <mat-form-field  *ngIf="[ 'text','password','email','number','search','tel','url'].includes(control.type)"  class="example-full-width" >
+        <mat-form-field  *ngIf="[ 'text','password','email','number','search','tel','url'].includes(control.type.toLowerCase())"  class="example-full-width" >
             <mat-label>{{ control.label }}</mat-label>
-            <input matInput   [type]="control.type"   [formControlName]="control.name" [value]="control.value"  >
+            <input matInput   [type]="control.type.toLowerCase()"   [formControlName]="control.name.toLowerCase()" [value]="control.value"  >
         </mat-form-field>
 
-        <mat-radio-group  [formControlName]="control.name"   *ngIf="control.type === 'radio'"  [ariaLabel]="control.label" >
+        <mat-radio-group  [formControlName]="control.name.toLowerCase()"   *ngIf="control.type.toLowerCase() === 'radio'"  [ariaLabel]="control.label" >
             <mat-radio-button     *ngFor="let options of control.options" [value]="options"   > {{options}} </mat-radio-button>
         </mat-radio-group>
 
-        <section   *ngIf="control.type === 'checkbox'" class="example-section" >
+        <section   *ngIf="control.type.toLowerCase() === 'checkbox'" class="example-section" >
  
-        <mat-checkbox #asd  [formControlName]="control.name"  *ngFor="let options of control.options"  (change)="radioSelected(asd)"   [value]="options"   class="example-margin">{{options}}</mat-checkbox>
+        <mat-checkbox #asd  [formControlName]="control.name.toLowerCase()"  *ngFor="let options of control.options"  (change)="radioSelected(asd)"   [value]="options"   class="example-margin">{{options}}</mat-checkbox>
  
         </section>
 
-        <mat-form-field appearance="fill"  *ngIf="control.type === 'DropdownList'"  >
+        <mat-form-field appearance="fill"  *ngIf="control.type.toLowerCase()  === 'dropdownlist'"  >
             <mat-label>{{ control.label }}</mat-label>
-            <mat-select  [formControlName]="control.name"  >
+            <mat-select  [formControlName]="control.name.toLowerCase()"  >
                 <mat-option  *ngFor="let options of control.options" [value]="options"  >
                 {{options}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
       
-        <mat-slider  *ngIf="control.type === 'range'"   [min]="control.options.min" [max]="control.options.max" [step]="control.options.step"  >
-            <input matSliderThumb [formControlName]="control.name"  >
+        <mat-slider  *ngIf="control.type.toLowerCase() === 'range'"   [min]="control.options.min" [max]="control.options.max" [step]="control.options.step"  >
+            <input matSliderThumb [formControlName]="control.name.toLowerCase()"  >
           </mat-slider>
 
 
-          <mat-slide-toggle  *ngIf="control.type === 'toggle'"  [formControlName]="control.name"     >{{ control.label }}</mat-slide-toggle>
-          <mat-form-field *ngIf="control.type === 'textarea'"   appearance="fill">
+          <mat-slide-toggle  *ngIf="control.type.toLowerCase() === 'toggle'"  [formControlName]="control.name.toLowerCase()"     >{{ control.label }}</mat-slide-toggle>
+          <mat-form-field *ngIf="control.type.toLowerCase() === 'textarea'"   appearance="fill">
             <mat-label>{{ control.label }}</mat-label>
             <textarea matInput [formControlName]="control.name" ></textarea>
           </mat-form-field>       
